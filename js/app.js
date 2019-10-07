@@ -14,13 +14,26 @@ var __extends = (this && this.__extends) || (function () {
 })();
 console.log("utilities linked up");
 var Model = /** @class */ (function () {
-    function Model() {
+    function Model(name) {
+        this.name = name;
     }
     return Model;
 }());
 var Database = /** @class */ (function () {
     function Database() {
+        this.models = [];
     }
+    Database.prototype.addModel = function (model) {
+        try {
+            this.models.push(model);
+            return true;
+        }
+        catch (err) {
+            console.log("ERROR adding model " + model.name + " to database");
+            console.log(err);
+            return false;
+        }
+    };
     return Database;
 }());
 /// <reference path="./utilities.ts" />
